@@ -22,7 +22,7 @@ pipeline {
         stage('Docker_build') {
             steps {
                 echo 'Docker build_projectd'
-                sh 'docker build -t projectd .' 
+                sh 'docker build -t myproject .' 
             }
         }
         stage('login to dockerhub') {
@@ -34,7 +34,7 @@ pipeline {
         stage('Tag the Image') {
             steps {
                 echo 'Tag the Image'
-                sh 'docker tag  projectd jeevanveeru18/myproject'
+                sh 'docker tag  myproject jeevanveeru18/myproject'
             }
         } 
         stage('Deploy to docker hub') {
@@ -46,14 +46,14 @@ pipeline {
         stage('Remove Docker conatiner') {
             steps {
                 echo 'Remove Docker conatiner'
-                sh 'docker stop projectd_conatiner || true'
-                sh 'docker rm projectd_conatiner || true'
+                sh 'docker stop myproject_conatiner || true'
+                sh 'docker rm myproject_conatiner || true'
             }
         }        
         stage('Run docker image') {
             steps {
                 echo 'Deploy to docker hub'
-                sh 'docker run --name projectd_conatiner -d -p 8181:8080 jeevanveeru18/myproject'
+                sh 'docker run --name myproject_conatiner -d -p 8181:8080 jeevanveeru18/myproject'
             }
         }
         stage('added one more stage') {
