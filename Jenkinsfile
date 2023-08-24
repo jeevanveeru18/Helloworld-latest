@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "agentA" }
+    agent { label "project_slave" }
     
     triggers {
         pollSCM('* * * * *')
@@ -9,7 +9,7 @@ pipeline {
         stage('clone_project_A') {
             steps {
                 echo 'clone project A'
-                git 'https://github.com/vincloud2/Helloworld-latest.git'
+                git 'https://github.com/jeevanveeru18/Helloworld-latest.git'
             }
         }
         stage('build_project_A') {
@@ -28,19 +28,19 @@ pipeline {
         stage('login to dockerhub') {
             steps {
                 echo 'login to dockerhub'
-                sh 'docker login -u vnom1985 -p abc@12345'
+                sh 'docker login -u jeevanveeru18 -p Jeevan45$'
             }
         } 
         stage('Tag the Image') {
             steps {
                 echo 'Tag the Image'
-                sh 'docker tag  projectd vnom1985/projectd'
+                sh 'docker tag  projectd jeevanveeru18/myproject'
             }
         } 
         stage('Deploy to docker hub') {
             steps {
                 echo 'Deploy to docker hub'
-                sh 'docker push vnom1985/projectd'
+                sh 'docker push jeevanveeru18/myproject '
             }
         }
         stage('Remove Docker conatiner') {
@@ -53,7 +53,7 @@ pipeline {
         stage('Run docker image') {
             steps {
                 echo 'Deploy to docker hub'
-                sh 'docker run --name projectd_conatiner -d -p 8181:8080 vnom1985/projectd'
+                sh 'docker run --name projectd_conatiner -d -p 8181:8080 jeevanveeru18/myproject'
             }
         }
         stage('added one more stage') {
