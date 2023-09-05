@@ -6,7 +6,7 @@
 <title>Welcome to Jeevan's Bank Of India</title>
 <style>
   body {
-    background-color: sky blue;
+    background-color: light blue;
   }
 </style>
 </head>
