@@ -1,6 +1,6 @@
 pipeline {
-    agent { label "project_slave" }
-    
+    agent any
+           
     triggers {
         pollSCM('* * * * *')
     }    
